@@ -25,9 +25,11 @@ setAllMenu();
 const loadAllCategoryNews = async (id, name) => {
     //start loading
     toggleSpinner(true);
+
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     const res = await fetch(url);
     const data = await res.json();
+
 
     const inputField = document.getElementById('input');
     if (data.data.length > 0) {
@@ -45,6 +47,9 @@ const loadAllCategoryNews = async (id, name) => {
 const displayAllNews = data => {
     const displayContainer = document.getElementById('display-container');
     displayContainer.innerHTML = '';
+
+
+    // display all data 
     data.forEach(d => {
         const div = document.createElement('div');
         div.classList.add('col');
@@ -83,7 +88,6 @@ const loadNewsDetails = async (id) => {
 }
 const displayNewsDetails = data => {
     data.forEach(d => {
-        console.log(d);
         const title = document.getElementById('newsDetailModalLabel');
         title.innerText = `${d.title}`;
 
@@ -112,6 +116,9 @@ const toggleSpinner = (isLoading) => {
         loaderSpinner.classList.add('d-none');
     }
 }
+
+
+
 
 
 
