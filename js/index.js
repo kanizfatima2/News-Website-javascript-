@@ -12,20 +12,23 @@ const setAllMenu = async () => {
     const news = (data.data.news_category);
     const ul = document.getElementById('ul');
     news.forEach(news => {
-        // console.log(news.category_name)
+
         const li = document.createElement('li');
         li.innerHTML = `<a onclick="loadAllCategoryNews('${news.category_id}','${news.category_name}')" class="fw-bold">${news.category_name} </a>`;
         ul.appendChild(li)
     })
 }
 setAllMenu();
-// loadAllNews();
+
 
 // loading all news category by id 
 const loadAllCategoryNews = async (id, name) => {
+    //start loading
+    toggleSpinner(true);
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     const res = await fetch(url);
     const data = await res.json();
+
     const inputField = document.getElementById('input');
     if (data.data.length > 0) {
         inputField.value = `${data.data.length} items found for category ${name}`;
@@ -67,6 +70,8 @@ const displayAllNews = data => {
             </div>`;
         displayContainer.appendChild(div);
     })
+    //stop loading
+    toggleSpinner(false);
 }
 
 // loading and displaying news details in Modal 
@@ -97,7 +102,16 @@ const displayNewsDetails = data => {
 }
 
 
-
+// spinner loading or not 
+const toggleSpinner = (isLoading) => {
+    const loaderSpinner = document.getElementById('loader');
+    if (isLoading) {
+        loaderSpinner.classList.remove('d-none');
+    }
+    else {
+        loaderSpinner.classList.add('d-none');
+    }
+}
 
 
 
