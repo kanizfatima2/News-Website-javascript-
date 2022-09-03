@@ -1,9 +1,14 @@
 // loading all data 
 const loadAllNews = async () => {
-    const url = `https://openapi.programming-hero.com/api/news/categories`;
-    const res = await fetch(url);
-    const data = await res.json();
-    return (data);
+    try {
+        const url = `https://openapi.programming-hero.com/api/news/categories`;
+        const res = await fetch(url);
+        const data = await res.json();
+        return (data);
+    }
+    catch (error) {
+        console.log(error);
+    }
 }
 
 // setting all news menu 
@@ -25,6 +30,7 @@ setAllMenu();
 const loadAllCategoryNews = async (id, name) => {
     //start loading
     toggleSpinner(true);
+
 
     const url = `https://openapi.programming-hero.com/api/news/category/${id}`;
     const res = await fetch(url);
@@ -81,10 +87,15 @@ const displayAllNews = data => {
 
 // loading and displaying news details in Modal 
 const loadNewsDetails = async (id) => {
-    const url = ` https://openapi.programming-hero.com/api/news/${id}`;
-    const res = await fetch(url);
-    const data = await res.json();
-    displayNewsDetails(data.data);
+    try {
+        const url = ` https://openapi.programming-hero.com/api/news/${id}`;
+        const res = await fetch(url);
+        const data = await res.json();
+        displayNewsDetails(data.data);
+    }
+    catch (e) {
+        console.log(e)
+    }
 }
 const displayNewsDetails = data => {
     data.forEach(d => {
