@@ -6,3 +6,29 @@
 .nav-link:hover {
     border-bottom: 3px solid blue;
 }
+
+hr.solid {
+    border-top: 3px solid #bbb;
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+li {
+    list-style: none;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
+
+a {
+    color: black;
+}
+
+a:active {
+    color: blue;
+}
