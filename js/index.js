@@ -113,7 +113,7 @@ const toggleSpinner = (isLoading) => {
         loaderSpinner.classList.remove('d-none');
     }
     else {
-        // loaderSpinner.classList.add('d-none');
+        loaderSpinner.classList.add('d-none');
     }
 }
 
